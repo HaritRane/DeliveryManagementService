@@ -1,9 +1,7 @@
 package cms;
 
 import java.lang.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 class djikstra {
     // A utility function to find the vertex with minimum distance value,
@@ -82,7 +80,7 @@ return dist[dest];
     // Driver method
 
 
-    void makepath(int[] arr) {
+    int shortest(int src,int dest) {
         /* Let us create the example graph discussed above */
       /*
       A          B
@@ -110,82 +108,7 @@ return dist[dest];
                 {0, 22, 0, 19, 0, 0}
         };
 
-        djikstra t = new djikstra();
-        // t.dijkstra(graph, 0);
-        // for(int i=0;i<op.arr.length;i++) {
-        //    t.dijkstra(graph, op.arr[i]);
-        //}
-
-        Permutation p = new Permutation();
-//defining an array whose permutation is to find
-
-
-//calling the user-defined method
-
-        //int[] arr={2,4,3,2,1};
-        // p.findPermutation(arr,5,5);
-        p.findPermutation(arr, arr.length, arr.length);
-        int[] path =new int[arr.length];
-        int ans = INF;
-        for (int[] permutation : p.permutations ) {
-            int cost = 0;
-            int previous = 0;
-            for (int u : permutation) {
-                cost = cost + t.dijkstra(graph, 0, u);
-                previous = u;
-            }
-            cost = cost + t.dijkstra(graph, previous, 0);
-            if (cost < ans) {
-                ans = cost;
-                path = permutation;
-            }
-        }
-
-      // return path;
-       System.out.println(Arrays.toString(path));
-    }
-
-}
- class Permutation
-{ ArrayList<int[]> permutations = new ArrayList<int[]>();
-    //method to print permutations of specified array
-    int[] getPermutations(int[] array, int n)
-    {     return array;
-       // for (int i = 0; i < n; i++)
-          //  System.out.print(array[i] + " ");
-//throws the cursor to the next line
-       // System.out.println();
-    }
-    //finds permutation using Heap Algorithm
-    void findPermutation(int[] array, int size, int n)
-    {
-// if size becomes 1, it prints the obtained permutation
-        if (size == 1)
-           permutations.add(array);
-           //return array;
-        for (int i = 0; i < size; i++)
-        {
-            findPermutation(array, size - 1, n);
-//if the length of the array is odd, it swaps the 0th element with the last element
-            if (size % 2 == 1)
-            {
-//performing swapping
-                int temp = array[0];
-                array[0] = array[size - 1];
-                array[size - 1] = temp;
-            }
-//if the size of the array is even, it swaps the ith element with the last element
-            else
-            {
-//taking a temp variable for swapping
-                int temp;
-//performing swapping
-                temp = array[i];
-                array[i] = array[size - 1];
-                array[size - 1] = temp;
-            }
-        }
+       return dijkstra(graph,src,dest);
 
     }
-
 }
